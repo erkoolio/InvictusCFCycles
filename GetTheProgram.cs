@@ -25,30 +25,32 @@ namespace InvictusCFCycles
             {
                 foreach (string item in kk)
                 {
-                    for (int i = 0; i <System.DateTime.DaysInMonth(2017, actualMonthNro); i++)
+                    for (int i = 0; i < System.DateTime.DaysInMonth(2017, actualMonthNro); i++)
                     {
-                        addressOfCF = String.Format(@"http://www.crossfitinvictus.com/wod/{0}-{1}-2017-competition/",kk[kknumber], pvm );   
+                        addressOfCF = String.Format(@"http://www.crossfitinvictus.com/wod/{0}-{1}-2017-competition/",
+                            kk[kknumber], pvm);
                     }
-                
-                
-                
+
+
+
                 }
-            
+
                 //var addressOfCF = String.Format(@"http://www.crossfitinvictus.com/wod/{0}-{1}-2017-competition/",kk[kknumber], pvm );
 
                 var wc = new WebClient();
                 var content = wc.DownloadString(addressOfCF);
                 var paikka = content.IndexOf("A. ");
-            
+
                 var nameOfFile = "testi.txt";
 
-                using (var sw = new StreamWriter((@"D:\Gdrive\CrossfitValmennus\Invictuksen ohjelma2017\" + nameOfFile), true, Encoding.UTF8))
+                using (var sw = new StreamWriter((@"D:\Gdrive\CrossfitValmennus\Invictuksen ohjelma2017\" + nameOfFile),
+                    true, Encoding.UTF8))
                 {
                     var alku = content.IndexOf("<p>A.<");
 
                     var temp = content.Substring(alku);
                     var loppu = temp.IndexOf("</div>");
-                
+
                     var mites = temp.Substring(0, loppu).Replace("<br />", @"\n;").Split(';');
                     foreach (var item in mites)
                     {
@@ -56,7 +58,6 @@ namespace InvictusCFCycles
                     }
                     sw.Write("==========================================");
                 }
-            }
 
             }
             catch (Exception e)
@@ -64,6 +65,8 @@ namespace InvictusCFCycles
                 Console.WriteLine(e);
                 throw;
             }
-            
+
         }
     }
+ 
+}
