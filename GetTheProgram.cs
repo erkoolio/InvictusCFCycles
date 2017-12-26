@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -13,34 +14,56 @@ namespace InvictusCFCycles
         {
 
             //April 3 - august 8
-            //'
-            var pvm = 3;
+            //
+            var addressOfCF = String.Empty;
+            ;
+            var pvm = 1;
+            var kknumber = 0;
+            var actualMonthNro = 4;
             string[] kk = {"april", "may", "june", "july", "august", "september", "november", "october", "december"};
-            
-            
-            var addressOfCF = String.Format(@"http://www.crossfitinvictus.com/wod/{0}-{1}-2017-competition/",kk[0], pvm );
-
-        var wc = new WebClient();
-            var content = wc.DownloadString(addressOfCF);
-            var paikka = content.IndexOf("A. ");
-            
-            var nameOfFile = "testi.txt";
-
-            using (var sw = new StreamWriter((@"D:\Gdrive\CrossfitValmennus\Invictuksen ohjelma2017\" + nameOfFile), true, Encoding.UTF8))
+            try
             {
-                var alku = content.IndexOf("<p>A.<");
-
-                var temp = content.Substring(alku);
-                var loppu = temp.IndexOf("</div>");
-                
-                var mites = temp.Substring(0, loppu).Replace("<br />", @"\n;").Split(';');
-                foreach (var item in mites)
+                foreach (string item in kk)
                 {
-                    sw.Write(item);
+                    for (int i = 0; i <System.DateTime.DaysInMonth(2017, actualMonthNro); i++)
+                    {
+                        addressOfCF = String.Format(@"http://www.crossfitinvictus.com/wod/{0}-{1}-2017-competition/",kk[kknumber], pvm );   
+                    }
+                
+                
+                
                 }
-                sw.Write("==========================================");
-            }
+            
+                //var addressOfCF = String.Format(@"http://www.crossfitinvictus.com/wod/{0}-{1}-2017-competition/",kk[kknumber], pvm );
+
+                var wc = new WebClient();
+                var content = wc.DownloadString(addressOfCF);
+                var paikka = content.IndexOf("A. ");
+            
+                var nameOfFile = "testi.txt";
+
+                using (var sw = new StreamWriter((@"D:\Gdrive\CrossfitValmennus\Invictuksen ohjelma2017\" + nameOfFile), true, Encoding.UTF8))
+                {
+                    var alku = content.IndexOf("<p>A.<");
+
+                    var temp = content.Substring(alku);
+                    var loppu = temp.IndexOf("</div>");
+                
+                    var mites = temp.Substring(0, loppu).Replace("<br />", @"\n;").Split(';');
+                    foreach (var item in mites)
+                    {
+                        sw.Write(item);
+                    }
+                    sw.Write("==========================================");
+                }
             }
 
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            
         }
     }
