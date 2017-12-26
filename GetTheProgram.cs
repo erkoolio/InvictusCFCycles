@@ -11,12 +11,16 @@ namespace InvictusCFCycles
     {
         public static void Main(string[] args)
         {
-            
+
             //April 3 - august 8
-            //
-            var addressOfCF = @"http://www.crossfitinvictus.com/wod/april-3-2017-competition/";
+            //'
+            var pvm = 3;
+            string[] kk = {"april", "may", "june", "july", "august", "september", "november", "october", "december"};
             
-            var wc = new WebClient();
+            
+            var addressOfCF = String.Format(@"http://www.crossfitinvictus.com/wod/{0}-{1}-2017-competition/",kk[0], pvm );
+
+        var wc = new WebClient();
             var content = wc.DownloadString(addressOfCF);
             var paikka = content.IndexOf("A. ");
             
