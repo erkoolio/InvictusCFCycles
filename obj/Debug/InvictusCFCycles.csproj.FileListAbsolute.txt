@@ -1,0 +1,6 @@
+C:\Users\Erkko\RiderProjects\InvictusCFCycles\bin\Debug\InvictusCFCycles.exe
+C:\Users\Erkko\RiderProjects\InvictusCFCycles\bin\Debug\InvictusCFCycles.pdb
+C:\Users\Erkko\RiderProjects\InvictusCFCycles\obj\Debug\InvictusCFCycles.csprojResolveAssemblyReference.cache
+C:\Users\Erkko\RiderProjects\InvictusCFCycles\obj\Debug\InvictusCFCycles.csproj.CoreCompileInputs.cache
+C:\Users\Erkko\RiderProjects\InvictusCFCycles\obj\Debug\InvictusCFCycles.exe
+C:\Users\Erkko\RiderProjects\InvictusCFCycles\obj\Debug\InvictusCFCycles.pdb
