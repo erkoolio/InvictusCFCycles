@@ -4,3 +4,6 @@ C:\Users\Erkko\RiderProjects\InvictusCFCycles\obj\Debug\InvictusCFCycles.csprojR
 C:\Users\Erkko\RiderProjects\InvictusCFCycles\obj\Debug\InvictusCFCycles.csproj.CoreCompileInputs.cache
 C:\Users\Erkko\RiderProjects\InvictusCFCycles\obj\Debug\InvictusCFCycles.exe
 C:\Users\Erkko\RiderProjects\InvictusCFCycles\obj\Debug\InvictusCFCycles.pdb
+C:\Users\Erkko\RiderProjects\InvictusCFCycles\bin\Debug\HtmlAgilityPack.dll
+C:\Users\Erkko\RiderProjects\InvictusCFCycles\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\Erkko\RiderProjects\InvictusCFCycles\bin\Debug\HtmlAgilityPack.xml
