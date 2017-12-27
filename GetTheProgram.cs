@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using HtmlAgilityPack;
 
 namespace InvictusCFCycles
 {
@@ -16,10 +17,11 @@ namespace InvictusCFCycles
             //April 3 - august 8
             //
             var addressOfCF = String.Empty;
-            ;
+            
             var pvm = 1;
             var kknumber = 0;
             var actualMonthNro = 4;
+            string value = null;
             string[] kk = {"april", "may", "june", "july", "august", "september", "november", "october", "december"};
             try
             {
@@ -29,34 +31,33 @@ namespace InvictusCFCycles
                     {
                         addressOfCF = String.Format(@"http://www.crossfitinvictus.com/wod/{0}-{1}-2017-competition/",
                             kk[kknumber], pvm);
+                        
+                        var wc = new HtmlWeb();
+                        var doc = wc.Load(addressOfCF);
+                
+                        if (doc != null)
+                        {
+                            var node = doc.DocumentNode.SelectSingleNode("//div[@class='entry-content']");
+                            if (node != null)
+                            {
+                                value = node.InnerText.Trim();
+                            }
+                        }
+                
+                        var nameOfFile = String.Format("Invictus{0}{1}.txt",kk[kknumber],pvm);
+
+                        using (var sw = new StreamWriter((@"D:\Gdrive\CrossfitValmennus\Invictuksen ohjelma2017\" + nameOfFile),
+                            true, Encoding.UTF8))
+                        {
+                            
+                        }
+                        
+                        
+                        
                     }
 
 
 
-                }
-
-                //var addressOfCF = String.Format(@"http://www.crossfitinvictus.com/wod/{0}-{1}-2017-competition/",kk[kknumber], pvm );
-
-                var wc = new WebClient();
-                var content = wc.DownloadString(addressOfCF);
-                var paikka = content.IndexOf("A. ");
-
-                var nameOfFile = "testi.txt";
-
-                using (var sw = new StreamWriter((@"D:\Gdrive\CrossfitValmennus\Invictuksen ohjelma2017\" + nameOfFile),
-                    true, Encoding.UTF8))
-                {
-                    var alku = content.IndexOf("<p>A.<");
-
-                    var temp = content.Substring(alku);
-                    var loppu = temp.IndexOf("</div>");
-
-                    var mites = temp.Substring(0, loppu).Replace("<br />", @"\n;").Split(';');
-                    foreach (var item in mites)
-                    {
-                        sw.Write(item);
-                    }
-                    sw.Write("==========================================");
                 }
 
             }
